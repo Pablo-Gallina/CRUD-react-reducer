@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({btnStyle, textButton}) => {
-    return <button type="button" className={`btn btn-${btnStyle}`}>{textButton}</button>
+const Button = ({btnStyle, textButton, _funcion = ()=>{}}) => {
+    return <button type="button" className={`btn btn-${btnStyle}`} onClick={_funcion}>{textButton}</button>
 }
 
 Button.propTypes = {

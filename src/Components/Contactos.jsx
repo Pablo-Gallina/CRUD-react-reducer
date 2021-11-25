@@ -29,7 +29,7 @@ const Contactos = () => {
     return (
         <>  
             <Modal body={<Form dispatch={dispatch} />} />
-            <Table contactos={state} />
+            <Table contactos={state} dispatch={dispatch} />
         </>
     )
 }
