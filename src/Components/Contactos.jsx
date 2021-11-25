@@ -5,23 +5,7 @@ import Form from './Form/Form'
 import Table from './Table/Table'
 
 
-const contactos = [
-    {
-      id: "asdfasdf",
-      nombre: "Raul",
-      numero: "54789632"
-    },
-    {
-      id: "Aoiu5",
-      nombre: "Pablo",
-      numero: "36987541"
-    },
-    {
-        id: "lio-987",
-        nombre: "Daniel",
-        numero: "56234875"
-    }
-]
+const contactos = []
 
 const Contactos = () => {
     //state = estado inicial, dispatch = funcion que va a disparar el cambio de estado, como un setState

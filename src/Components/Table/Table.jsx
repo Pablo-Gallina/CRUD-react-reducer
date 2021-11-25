@@ -21,12 +21,16 @@ const Table = ({ contactos = [], dispatch }) => {
                 </thead>
                 <tbody>
                     {
-                        contactos.map( ( contacto, index ) =><tr key={contacto.id}>
+                        contactos.length <= 0 ? <tr>
+                                                    <td className="text-center" colSpan="4">No hay datos</td>
+                                                </tr> 
+                                        : contactos.map( ( contacto, index ) =><tr key={contacto.id}>
                                             <th scope="row">{index +1}</th>
                                             <td>{ contacto.nombre }</td>
                                             <td>{ contacto.numero }</td>
                                             <td> <Button btnStyle="danger" textButton="Eliminar" _funcion={()=>handleEliminar(contacto.id)}/> </td>
-                                        </tr>)
+                                        </tr>) 
+                        
                     }
                     
                 </tbody>
@@ -36,7 +40,7 @@ const Table = ({ contactos = [], dispatch }) => {
 }
 
 Table.propTypes = {
-
+    contactos: PropTypes.array
 }
 
 export default Table
