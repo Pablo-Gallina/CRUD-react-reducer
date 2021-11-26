@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({dispatch}) => {
+    const button = useRef(null);
+    const inpNombre = useRef(null);
+    const inpNumero = useRef(null);
 
     const [data, setData] = useState({nombre: "", numero:""});
 
@@ -27,11 +30,18 @@ const Form = ({dispatch}) => {
     }
 
     const handleAgregar = ()=>{
-        dispatch(actionAgregar)
+        if (data.nombre && data.numero) {
+            dispatch(actionAgregar);
+            button.current.click();
+        }
     }
 
     const handleSubmit = e =>{
         e.preventDefault();
+        inpNumero.current.value = "";
+        inpNombre.current.value = "";
+        data.nombre = "";
+        data.numero = "";
     }
 
     return (
@@ -41,17 +51,17 @@ const Form = ({dispatch}) => {
                 <div className="modal-body">
                     <div className="col-md-12">
                         <label htmlFor="nombre" className="form-label">Nombre</label>
-                        <input onChange={handleChange} name="nombre" value={nombre} type="text" className="form-control" id="nombre" required/>
+                        <input ref={inpNombre} onChange={handleChange} name="nombre" value={nombre} type="text" className="form-control" id="nombre" required/>
                     </div>
 
                     <div className="col-md-12">
                         <label htmlFor="numero" className="form-label">Numero</label>
-                        <input onChange={handleChange} name="numero" value={numero} type="number" className="form-control" id="numero" required/>
+                        <input ref={inpNumero} onChange={handleChange} name="numero" value={numero} type="number" className="form-control" id="numero" required/>
                     </div>        
                 </div>
 
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button ref={button} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" className="btn btn-primary" onClick={handleAgregar}>Agregar</button>
                 </div>
                 
