@@ -5,7 +5,12 @@ import Button from '../Button/Button'
 const Table = ({ contactos = [], dispatch }) => {
 
     const handleEliminar = (id)=>{
-        console.log(id);
+        const eliminarAction = {
+            type: "eliminar",
+            payload: id
+        }
+
+        dispatch(eliminarAction);
     }
 
     return (
